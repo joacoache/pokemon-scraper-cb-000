@@ -1,7 +1,6 @@
 class Pokemon
   attr_accessor :id, :name, :type, :db
 
-
   def initialize(id:, name:, type:, db:)
     @id = id
     @name = name
@@ -9,4 +8,8 @@ class Pokemon
     @db = db
   end
 
+  def self.save(db, name, type)
+    db.execute( "INSERT INTO pokemon (name, type) VALUES ( ?, ? )", [name, type])
+  end
+  
 end
